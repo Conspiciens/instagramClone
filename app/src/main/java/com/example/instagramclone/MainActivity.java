@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity{
         btnCaptureImage.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                launchCamera(); 
+                launchCamera();
             }
         });
 
@@ -105,14 +105,18 @@ public class MainActivity extends AppCompatActivity{
 
         // If you call startActivityForResult() using an intent that no app can handle, your app will crash.
         // So as long as the result is not null, it's safe to use the intent.
+        //
+
         if (intent.resolveActivity(getPackageManager()) != null) {
             // Start the image capture intent to take photo
             startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
         }
     }
 
+
+
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
             if (resultCode == RESULT_OK) {
